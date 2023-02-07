@@ -9,13 +9,18 @@ public class Database {
     public Database(List<Employee> employees) {
         this.employees = new ArrayList<>(employees);
         this.indexMap = new HashMap<>();
-        for (Employee employee : employees) {
-            indexMap.put(employee.getId(), employee);
-        }
+        employees.stream().forEach(employee -> {indexMap.put(employee.getId(), employee);});
+//        for (Employee employee : employees) {
+//            indexMap.put(employee.getId(), employee);
+//        }
     }
 
     public void create() {
         Employee employee = DataUtil.getEmployee("create: ");
+        create(employee);
+    }
+
+    public void create(Employee employee) {
         if (employee != null) {
             employees.add(employee);
             indexMap.put(employee.getId(), employee);
@@ -66,9 +71,10 @@ public class Database {
 
     public void positions() {
         List<Position> positions = new ArrayList<>();
-        for (Employee employee : employees) {
-            positions.add(employee.getPosition());
-        }
+        employees.stream().forEach(employee -> {positions.add(employee.getPosition());});
+//        for (Employee employee : employees) {
+//            positions.add(employee.getPosition());
+//        }
         System.out.println(new HashSet<>(positions));
     }
 
@@ -94,5 +100,6 @@ public class Database {
         List<Employee> sortedList = new ArrayList<>(employees);
         sortedList.sort(comparator);
         DataUtil.print(sortedList);
+
     }
 }
