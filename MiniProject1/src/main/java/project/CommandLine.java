@@ -6,7 +6,7 @@ public class CommandLine {
     public void exec() {
         Database db = new Database(DbInit.init());
         Scanner scanner = new Scanner(System.in);
-        System.out.println("CRUD application v0.1");
+        System.out.println("CRUD application v0.2");
         while (true) {
             System.out.print("# ");
             String cmd = scanner.next();

@@ -80,7 +80,7 @@ public class Database {
 
     public void sort() {
         String sortName = DataUtil.getString("sort: n[ame], p[osition], s[alary], a[ge]: ");
-        Comparator<Employee> comparator = null;
+        Comparator<Employee> comparator;
         switch (sortName.toLowerCase().charAt(0)) {
             case 'n':
                 comparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
@@ -89,10 +89,10 @@ public class Database {
                 comparator = (o1, o2) -> o1.getPosition().compareTo(o2.getPosition());
                 break;
             case 's':
-                comparator = ((o1, o2) -> o1.getSalary() - o2.getSalary());
+                comparator = (o1, o2) -> o1.getSalary() - o2.getSalary();
                 break;
             case 'a':
-                comparator = ((o1, o2) -> o1.getAge() - o2.getAge());
+                comparator = (o1, o2) -> o1.getAge() - o2.getAge();
                 break;
             default:
                 return;
