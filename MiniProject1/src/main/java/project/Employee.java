@@ -16,14 +16,13 @@ public class Employee {
         this.id = ++count;
     }
 
-    public Employee(String[] args) {
-        if (args.length == 4) {
-            this.name = args[0];
-            this.position = Position.valueOf(args[1]);
-            this.salary = Integer.parseInt(args[2]);
-            this.age = Integer.parseInt(args[3]);
+    public Employee(String[] x) {
+        if (x.length == 4) {
+            this.name = x[0];
+            this.position = Position.valueOf(x[1]);
+            this.salary = Integer.parseInt(x[2]);
+            this.age = Integer.parseInt(x[3]);
             this.id = ++count;
-
         }
     }
 
