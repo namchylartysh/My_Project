@@ -1,6 +1,6 @@
 
-"Albert", Java-Developer, 2300, 36
-"Tommy", Java-Developer, 2000, 27
-"Michelle", Web-Designer, 1800, 24
-"Josh", DevOps, 2500, 30
-"Julia", Engineer, 1500, 31
+"Albert", BOSS, 2300, 36
+"Tommy", ENGINEER, 2000, 27
+"Michelle", ENGINEER, 1800, 24
+"Josh", ASSISTANT, 2500, 30
+"Julia", CLEANER, 1200, 31

@@ -14,7 +14,38 @@ public class Employee {
         this.salary = salary;
         this.age = age;
         this.id = ++count;
+    }
 
+    public Employee(String[] args) {
+        if (args.length == 4) {
+            this.name = args[0];
+            this.position = Position.valueOf(args[1]);
+            this.salary = Integer.parseInt(args[2]);
+            this.age = Integer.parseInt(args[3]);
+            this.id = ++count;
+
+        }
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public int getId() {

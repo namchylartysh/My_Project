@@ -1,12 +1,14 @@
 package project;
 
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 import java.util.Scanner;
 
 public class CommandLine {
-    public void exec() {
+    public void exec() throws FileNotFoundException {
         Database db = new Database(DbInit.init());
         Scanner scanner = new Scanner(System.in);
-        System.out.println("CRUD application v0.2");
+        System.out.println("CRUD application v0.3");
         while (true) {
             System.out.print("# ");
             String cmd = scanner.next();
