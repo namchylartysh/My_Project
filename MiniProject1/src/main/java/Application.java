@@ -1,6 +1,7 @@
 import project.CommandLine;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 
 /**
@@ -15,7 +16,7 @@ import java.net.URISyntaxException;
  */
 
 public class Application {
-    public static void main(String[] args) throws URISyntaxException, IllegalAccessException, FileNotFoundException {
+    public static void main(String[] args) throws URISyntaxException, IllegalAccessException, IOException {
         new CommandLine().exec();
     }
 }

@@ -37,6 +37,18 @@ public class DataUtil {
         return new Employee(name, position, salary, age);
     }
 
+//    public static Employee getNewEmployee(String prompt) {
+//        System.out.println(prompt);
+//        String name = scanner.next();
+//        Position position = createPosition();
+//        if (position == null) {
+//            return null;
+//        }
+//        int salary = scanner.nextInt();
+//        int age = scanner.nextInt();
+//        return new Employee(name, position, salary, age);
+//    }
+
     public static Employee getEmployeePart(String prompt) {
         System.out.println(prompt);
         Position position = getPosition();
@@ -48,7 +60,7 @@ public class DataUtil {
         return new Employee(null, position, salary, age);
     }
 
-    private static Position getPosition() {
+    public static Position getPosition() {
         String value = scanner.next();
         try {
             Position position = Position.valueOf(value.toUpperCase());
@@ -57,7 +69,5 @@ public class DataUtil {
             System.out.println("Error: Position not found");
             return null;
         }
-
-
     }
 }

@@ -18,6 +18,8 @@ public class Database {
     public void create() {
         Employee employee = DataUtil.getEmployee("create: ");
         create(employee);
+
+
     }
 
     public void create(Employee employee) {
@@ -33,14 +35,36 @@ public class Database {
     }
 
     public void find() {
-        String name = DataUtil.getString("find: ");
-        List<Employee> found = new ArrayList<>();
-        for (Employee employee : employees) {
-            if (employee.getName().contains(name)) {
-                found.add(employee);
+        Selection sn = new Selection(employees);
+        System.out.println("search by: name, position, salary, age");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            while (true) {
+                System.out.print("## ");
+                String enter = scanner.next();
+                switch (enter.toLowerCase()) {
+                    case "name":
+                        sn.selectByName();
+                        break;
+                    case "position":
+                        sn.selectByPosition();
+                        break;
+                    case "salary":
+                        sn.selectBySalary();
+                        break;
+                    case "age":
+                        sn.selectByAge();
+                        break;
+                    case "exit":
+                        System.out.println("Search finished");
+                        return;
+                    default:
+                        System.out.println("This criteria is not found");
+                }
             }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
-        DataUtil.print(found);
     }
 
     private Employee findById(int id) {
@@ -83,19 +107,33 @@ public class Database {
         Comparator<Employee> comparator;
         switch (sortName.toLowerCase().charAt(0)) {
             case 'n':
-                comparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+                comparator = Comparator.comparing(Employee::getName);
                 break;
             case 'p':
-                comparator = (o1, o2) -> o1.getPosition().compareTo(o2.getPosition());
+                comparator = Comparator.comparing(Employee::getPosition);
                 break;
             case 's':
-                comparator = (o1, o2) -> o1.getSalary() - o2.getSalary();
+                comparator = Comparator.comparingInt(Employee::getSalary);
                 break;
             case 'a':
-                comparator = (o1, o2) -> o1.getAge() - o2.getAge();
+                comparator = Comparator.comparingInt(Employee::getAge);
                 break;
             default:
                 return;
+//            case 'n':
+//                comparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
+//                break;
+//            case 'p':
+//                comparator = (o1, o2) -> o1.getPosition().compareTo(o2.getPosition());
+//                break;
+//            case 's':
+//                comparator = (o1, o2) -> o1.getSalary() - o2.getSalary();
+//                break;
+//            case 'a':
+//                comparator = (o1, o2) -> o1.getAge() - o2.getAge();
+//                break;
+//            default:
+//                return;
         }
         List<Employee> sortedList = new ArrayList<>(employees);
         sortedList.sort(comparator);

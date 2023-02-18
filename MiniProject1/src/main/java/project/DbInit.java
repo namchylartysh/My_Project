@@ -1,10 +1,15 @@
 package project;
 
+import com.sun.source.tree.BreakTree;
+
 import java.io.*;
+import java.net.URISyntaxException;
 import java.util.*;
 
 
 public class DbInit {
+
+  //  static String filePath = "./src/main/resources/employees.txt";
 
     public static List<Employee> init() throws FileNotFoundException {
 //        List<Employee> employees = Arrays.asList(
@@ -23,47 +28,25 @@ public class DbInit {
         while (scanner.hasNext()) {
             String line = scanner.nextLine();
             String[] newEmployee = line.split(", ");
-            System.out.println(Arrays.toString(newEmployee));
+            //System.out.println(Arrays.toString(newEmployee));
             list.add(newEmployee);
             Employee temp = new Employee(newEmployee);
             employees.add(temp);
         }
         return employees;
+    }
 
-        //        List<Employee> employees = new ArrayList<>();
-//        File file = new File("./src/main/resources/employees.txt");
-//        try (BufferedReader br = new BufferedReader(new FileReader(file));) {
-//            String line;
-//            Scanner scanner;
-//            int index = 0;
-//            while ((line = br.readLine()) != null) {
-//                Employee employee = new Employee();
-//                scanner = new Scanner(line);
-//                scanner.useDelimiter(",");
-//                while (scanner.hasNext()) {
-//                    String data = scanner.next();
-//                    if (index == 0) {
-//                        employee.setName(data);
-//                    }
-//                    if (index == 1) {
-//                        employee.setPosition(Position.valueOf(data));
-//                    }
-//                    if (index == 2) {
-//                        employee.setSalary(Integer.parseInt(data));
-//                    }
-//                    if (index == 3) {
-//                        employee.setAge(Integer.parseInt(data));
-//                    } else {
-//                        System.out.println("Failure data:" + data);
-//                    }
-//                    index++;
-//                }
-//                employees.add(employee);
-//                br.close();
-//            }
+//    public static List<Employee> updateDb(List<Employee> data) {
+//        List<Employee> employees = new ArrayList<>();
+//        File file = new File(filePath);
+//        try {
+//            FileWriter fr = null;
+//            fr = new FileWriter(file);
+//            fr.write(data.toString());
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
 //        return employees;
-    }
+//    }
+
 }

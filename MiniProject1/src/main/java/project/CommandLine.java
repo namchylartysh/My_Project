@@ -1,11 +1,12 @@
 package project;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Scanner;
 
 public class CommandLine {
-    public void exec() throws FileNotFoundException {
+    public void exec() throws IOException {
         Database db = new Database(DbInit.init());
         Scanner scanner = new Scanner(System.in);
         System.out.println("CRUD application v0.3");
@@ -13,6 +14,16 @@ public class CommandLine {
             System.out.print("# ");
             String cmd = scanner.next();
             switch (cmd.toLowerCase().charAt(0)) {
+                /*
+                                case 'c' -> db.create();
+                case 'r' -> db.read();
+                case 'u' -> db.update();
+                case 'd' -> db.delete();
+                case 'f' -> db.find();
+                case 'p' -> db.positions();
+                case 's' -> db.sort();
+                case 'e' -> {
+                 */
                 case 'c':
                     db.create();
                     break;
@@ -34,7 +45,7 @@ public class CommandLine {
                 case 's':
                     db.sort();
                     break;
-                case 'x':
+                case 'e':
                     System.out.println("Exit of command line");
                     return;
                 default:
