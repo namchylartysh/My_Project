@@ -1,0 +1,1 @@
+[{id=1, name='Albert', position='BOSS', salary=2300, age=36}, {id=2, name='Tommy', position='ENGINEER', salary=2000, age=27}, {id=3, name='Michelle', position='ENGINEER', salary=1800, age=24}, {id=4, name='Josh', position='ASSISTANT', salary=2500, age=30}, {id=5, name='Julia', position='CLEANER', salary=1200, age=41}, {id=6, name='Max', position='DESIGNER', salary=1200, age=34}]

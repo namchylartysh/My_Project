@@ -1,6 +1,5 @@
-
-"Albert", BOSS, 2300, 36
-"Tommy", ENGINEER, 2000, 27
-"Michelle", ENGINEER, 1800, 24
-"Josh", ASSISTANT, 2500, 30
-"Julia", CLEANER, 1200, 31
+Albert, BOSS, 2300, 36
+Tommy, ENGINEER, 2000, 27
+Michelle, ENGINEER, 1800, 24
+Josh, ASSISTANT, 2500, 30
+Julia, CLEANER, 1200, 41

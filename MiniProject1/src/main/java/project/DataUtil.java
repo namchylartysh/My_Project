@@ -28,7 +28,7 @@ public class DataUtil {
     public static Employee getEmployee(String prompt) {
         System.out.println(prompt);
         String name = scanner.next();
-        Position position = getPosition();
+        String position = getPosition();
         if (position == null) {
             return null;
         }
@@ -37,21 +37,9 @@ public class DataUtil {
         return new Employee(name, position, salary, age);
     }
 
-//    public static Employee getNewEmployee(String prompt) {
-//        System.out.println(prompt);
-//        String name = scanner.next();
-//        Position position = createPosition();
-//        if (position == null) {
-//            return null;
-//        }
-//        int salary = scanner.nextInt();
-//        int age = scanner.nextInt();
-//        return new Employee(name, position, salary, age);
-//    }
-
     public static Employee getEmployeePart(String prompt) {
         System.out.println(prompt);
-        Position position = getPosition();
+        String position = getPosition();
         if (position == null) {
             return null;
         }
@@ -60,10 +48,10 @@ public class DataUtil {
         return new Employee(null, position, salary, age);
     }
 
-    public static Position getPosition() {
+    public static String getPosition() {
         String value = scanner.next();
         try {
-            Position position = Position.valueOf(value.toUpperCase());
+            String position = value.toUpperCase();
             return position;
         } catch (IllegalArgumentException e) {
             System.out.println("Error: Position not found");

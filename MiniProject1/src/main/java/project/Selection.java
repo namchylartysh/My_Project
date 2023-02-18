@@ -19,7 +19,7 @@ public class Selection {
 
     public void selectByPosition() {
         System.out.print("position: ");
-        Position position = DataUtil.getPosition();
+        String position = DataUtil.getPosition();
         List<Employee> found = new ArrayList<>();
         for (Employee employee : employees) {
             if (employee.getPosition().equals(position)) {

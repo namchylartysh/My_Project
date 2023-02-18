@@ -1,24 +1,21 @@
 package project;
 
+import java.io.*;
 import java.util.*;
 
 public class Database {
-    List<Employee> employees;
+    static List<Employee> employees;
     Map<Integer, Employee> indexMap;
 
     public Database(List<Employee> employees) {
         this.employees = new ArrayList<>(employees);
         this.indexMap = new HashMap<>();
-        employees.stream().forEach(employee -> {indexMap.put(employee.getId(), employee);});
-//        for (Employee employee : employees) {
-//            indexMap.put(employee.getId(), employee);
-//        }
+        employees.forEach(employee -> {indexMap.put(employee.getId(), employee);});
     }
 
     public void create() {
         Employee employee = DataUtil.getEmployee("create: ");
         create(employee);
-
 
     }
 
@@ -93,15 +90,6 @@ public class Database {
         }
     }
 
-    public void positions() {
-        List<Position> positions = new ArrayList<>();
-        employees.stream().forEach(employee -> {positions.add(employee.getPosition());});
-//        for (Employee employee : employees) {
-//            positions.add(employee.getPosition());
-//        }
-        System.out.println(new HashSet<>(positions));
-    }
-
     public void sort() {
         String sortName = DataUtil.getString("sort: n[ame], p[osition], s[alary], a[ge]: ");
         Comparator<Employee> comparator;
@@ -138,6 +126,60 @@ public class Database {
         List<Employee> sortedList = new ArrayList<>(employees);
         sortedList.sort(comparator);
         DataUtil.print(sortedList);
+
+    }
+
+    public void group() {
+        Grouper gr = new Grouper(employees);
+        System.out.println("group by: [n]ames, [p]ositions, [s]alaries, [a]ges, e[x]it");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            while (true) {
+                System.out.print("## ");
+                String enter = scanner.next();
+                switch (enter.toLowerCase().charAt(0)) {
+                    case 'n':
+                        gr.groupByName();
+                        break;
+                    case 'p':
+                        gr.groupByPosition();
+                        break;
+                    case 's':
+                        gr.groupBySalary();
+                        break;
+                    case 'a':
+                        gr.groupByAge();
+                        break;
+                    case 'x':
+                        System.out.println("Grouping finished");
+                        return;
+                    default:
+                        System.out.println("This command is not found");
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveToFile() {
+        List<Employee> employeeList = new ArrayList<>(employees);
+        File file = new File("./src/main/resources/new_employees.txt");
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(file);
+            writer.write(employeeList.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                assert writer != null;
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Successfully wrote to the file");
+        }
 
     }
 }

@@ -1,15 +1,13 @@
 package project;
 
-import com.sun.source.tree.BreakTree;
-
 import java.io.*;
-import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 
 public class DbInit {
-
-  //  static String filePath = "./src/main/resources/employees.txt";
+    public static String pathName = "./src/main/resources/employees.txt";
 
     public static List<Employee> init() throws FileNotFoundException {
 //        List<Employee> employees = Arrays.asList(
@@ -22,7 +20,7 @@ public class DbInit {
 //        return employees;
 
         List<Employee> employees = new ArrayList<>();
-        File file = new File("./src/main/resources/employees.txt");
+        File file = new File(pathName);
         List<String[]> list = new ArrayList<>();
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()) {
@@ -35,6 +33,31 @@ public class DbInit {
         }
         return employees;
     }
+
+
+
+
+
+/*
+    private static void appendUsingOutputStream(String fileName, String data) {
+        OutputStream os = null;
+        try {
+            //в конструкторе FileOutputStream используем флаг true, который обозначает обновление содержимого файла
+            os = new FileOutputStream(new File(fileName), true);
+            os.write(data.getBytes(), 0, data.length());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                os.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+     */
+
+
 
 //    public static List<Employee> updateDb(List<Employee> data) {
 //        List<Employee> employees = new ArrayList<>();
