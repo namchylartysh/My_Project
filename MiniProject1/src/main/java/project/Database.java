@@ -5,7 +5,10 @@ import java.util.*;
 
 public class Database {
     static List<Employee> employees;
-    Map<Integer, Employee> indexMap;
+    static Map<Integer, Employee> indexMap;
+
+    public static String pathName = "./src/main/resources/new_employees.txt";
+
 
     public Database(List<Employee> employees) {
         this.employees = new ArrayList<>(employees);
@@ -13,22 +16,25 @@ public class Database {
         employees.forEach(employee -> {indexMap.put(employee.getId(), employee);});
     }
 
-    public void create() {
+    public static Employee create() {
         Employee employee = DataUtil.getEmployee("create: ");
         create(employee);
-
+        return employee;
     }
 
-    public void create(Employee employee) {
+    public static Employee create(Employee employee) {
         if (employee != null) {
             employees.add(employee);
             indexMap.put(employee.getId(), employee);
             System.out.println("Added " + employee);
         }
+        return employee;
+
     }
 
-    public void read() {
+    public static List<Employee> read() {
         DataUtil.print(employees);
+        return employees;
     }
 
     public void find() {
@@ -64,7 +70,7 @@ public class Database {
         }
     }
 
-    private Employee findById(int id) {
+    public Employee findById(int id) {
         return indexMap.get(id);
     }
 
@@ -108,20 +114,6 @@ public class Database {
                 break;
             default:
                 return;
-//            case 'n':
-//                comparator = (o1, o2) -> o1.getName().compareTo(o2.getName());
-//                break;
-//            case 'p':
-//                comparator = (o1, o2) -> o1.getPosition().compareTo(o2.getPosition());
-//                break;
-//            case 's':
-//                comparator = (o1, o2) -> o1.getSalary() - o2.getSalary();
-//                break;
-//            case 'a':
-//                comparator = (o1, o2) -> o1.getAge() - o2.getAge();
-//                break;
-//            default:
-//                return;
         }
         List<Employee> sortedList = new ArrayList<>(employees);
         sortedList.sort(comparator);
@@ -164,7 +156,7 @@ public class Database {
 
     public void saveToFile() {
         List<Employee> employeeList = new ArrayList<>(employees);
-        File file = new File("./src/main/resources/new_employees.txt");
+        File file = new File(pathName);
         FileWriter writer = null;
         try {
             writer = new FileWriter(file);
@@ -180,6 +172,5 @@ public class Database {
             }
             System.out.println("Successfully wrote to the file");
         }
-
     }
 }
