@@ -1,4 +1,4 @@
-package mysolution;
+package multithreaded_chat;
 
 import java.awt.*;
 import java.awt.event.*;
