@@ -1,6 +1,6 @@
 package online.bank.app.servicestest;
+import online.bank.app.models.Role;
 import online.bank.app.models.User;
-import online.bank.app.models.testmodels.TestUser;
 import online.bank.app.repositories.UserRepository;
 import online.bank.app.services.UserService;
 import org.junit.Test;
@@ -10,24 +10,27 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+
 @SpringBootTest
 public class UserServiceTest {
 
     @Autowired
     UserService userService;
 
-    static final int USER_ID = 1;
-    static final String FIRST_NAME = "Ivan";
-    static final String LAST_NAME = "Ivanov";
+    @Autowired
+    UserRepository userRepository;
+    static final Role ROLE = Role.CLIENT;
+    static final String FIRST_NAME = "Max";
+    static final String LAST_NAME = "Maximov";
     static final String EMAIL = "user@user.ru";
-    static final String PASSWORD = "user1";
+    static final String PASSWORD = "user99";
+
 
     @Test
     public void findAllTest() {
-        User user = new User(USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD);
+        User user = new User(FIRST_NAME, LAST_NAME, EMAIL, PASSWORD, ROLE);
         userService.save(user);
         List<User> users = userService.findAll();
-
         Assertions.assertEquals(1, users.size());
     }
 }

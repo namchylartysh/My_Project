@@ -20,11 +20,6 @@
             <column name="password" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="token" type="varchar(255)"/>
-            <column name="verified" type="int" defaultValue="0"/>
-            <column name="verified_at" type="DATETIME"/>
-            <column name="created_at" type="TIMESTAMP"/>
-            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="NOW()"/>
             <column name="role" type="varchar(50)"/>
         </createTable>
 
@@ -45,7 +40,6 @@
                 <constraints nullable="false"/>
             </column>
             <column name="created_at" type="TIMESTAMP"/>
-            <column name="updated_at" type="TIMESTAMP"/>
             <column name="user_id" type="int">
                 <constraints nullable="false"/>
             </column>

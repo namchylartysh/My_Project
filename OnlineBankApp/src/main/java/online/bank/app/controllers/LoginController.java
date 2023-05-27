@@ -1,6 +1,5 @@
 package online.bank.app.controllers;
 
-import online.bank.app.helpers.Token;
 import online.bank.app.models.User;
 import online.bank.app.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +33,6 @@ public class LoginController {
             model.addAttribute("errorMessage", "Invalid email or password");
             return "login";
         }
-        String token = Token.generateToken();
-        user.setToken(token);
         session.setAttribute("currentUser", user);
         return "redirect:/app/dashboard";
     }

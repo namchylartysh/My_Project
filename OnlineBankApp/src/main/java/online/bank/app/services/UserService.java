@@ -1,8 +1,6 @@
 package online.bank.app.services;
 
-import online.bank.app.helpers.Token;
 import online.bank.app.models.User;
-import online.bank.app.models.testmodels.TestUser;
 import online.bank.app.repositories.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,15 +31,7 @@ public class UserService {
     }
 
     public void save(User user) {
-        String token = Token.generateToken();
-        user.setToken(token);
         userRepository.save(user);
-    }
-
-    public User add(User user) {
-        User newUser = new User(user.getUser_id(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword());
-        newUser = userRepository.save(newUser);
-        return newUser;
     }
 
     public void delete(Integer id) {

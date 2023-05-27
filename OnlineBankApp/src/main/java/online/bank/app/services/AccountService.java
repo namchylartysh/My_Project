@@ -1,6 +1,5 @@
 package online.bank.app.services;
 
-import online.bank.app.controllers.vo.AccountVO;
 import online.bank.app.models.Account;
 import online.bank.app.models.User;
 import online.bank.app.repositories.AccountRepository;
@@ -61,9 +60,9 @@ public class AccountService {
         logger.fatal("Executing getUserAccountsById method with user_id: " + user_id);
         List<Account> accounts = accountRepository.findAllByUserId(user_id);
 
-        if (accounts.isEmpty()) {
-            throw new NoSuchElementException("No accounts found for user with ID: " + user_id);
-        }
+//        if (accounts.isEmpty()) {
+//            throw new NoSuchElementException("No accounts found for user with ID: " + user_id);
+//        }
 
         return accounts;
     }
@@ -76,10 +75,10 @@ public class AccountService {
     public BigDecimal getTotalBalance(int user_id) {
         logger.fatal("Executing getTotalBalance method with user_id: " + user_id);
         List<Account> userAccounts = getUserAccountsById(user_id);
-
-        if (userAccounts.isEmpty()) {
-            throw new NoSuchElementException("No accounts found for user with ID: " + user_id);
-        }
+//
+//        if (userAccounts.isEmpty()) {
+//            throw new NoSuchElementException("No accounts found for user with ID: " + user_id);
+//        }
 
         BigDecimal totalBalance = BigDecimal.ZERO;
         for (Account account : userAccounts) {

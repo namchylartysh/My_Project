@@ -62,7 +62,6 @@
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex">Email <span class="ms-auto"><b>[[${user.email}]]</b></span></li>
                                         <li class="list-group-item d-flex">Password <span class="ms-auto"><b>[[${user.password}]]</b></span></li>
-                                        <li class="list-group-item d-flex">Date of Registration <span class="ms-auto"><b>[[${user.created_at}]]</b></span></li>
                                     </ul>
                                     <form th:action="@{/app/display_accounts/{id}(id=${user.user_id})}" method="GET">
                                         <button type="submit" class="btn btn-primary">Accounts</button>

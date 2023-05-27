@@ -12,16 +12,14 @@ public class AccountVO {
     private String accountType;
     private BigDecimal balance;
     private LocalDateTime created_at;
-    private LocalDateTime updated_at;
 
-    public AccountVO(int account_id, String accountNumber, String accountName, String accountType, BigDecimal balance, LocalDateTime created_at, LocalDateTime updated_at) {
+    public AccountVO(int account_id, String accountNumber, String accountName, String accountType, BigDecimal balance, LocalDateTime created_at) {
         this.account_id = account_id;
         this.accountNumber = accountNumber;
         this.accountName = accountName;
         this.accountType = accountType;
         this.balance = balance;
         this.created_at = created_at;
-        this.updated_at = updated_at;
     }
 
     public int getAccount_id() {
@@ -48,11 +46,7 @@ public class AccountVO {
         return created_at;
     }
 
-    public LocalDateTime getUpdated_at() {
-        return updated_at;
-    }
-
     public static AccountVO valueOf(Account account) {
-        return new AccountVO(account.getAccount_id(), account.getAccountNumber(), account.getAccountName(), account.getAccountType(), account.getBalance(), account.getCreated_at(), account.getUpdated_at());
+        return new AccountVO(account.getAccount_id(), account.getAccountNumber(), account.getAccountName(), account.getAccountType(), account.getBalance(), account.getCreated_at());
     }
 }
