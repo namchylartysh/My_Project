@@ -1,0 +1,12 @@
+*{
+    box-sizing: border-box;
+    font-family: Comfortaa, sans-serif;
+}
+
+body{
+    height: 100vh;
+    background-image: url("../images/new-dashboard.jpeg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}

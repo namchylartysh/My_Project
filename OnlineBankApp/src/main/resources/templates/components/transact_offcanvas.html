@@ -1,0 +1,60 @@
+<div th:fragment="transact_offcanvas">
+    <a id="transact-btn" class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+        Transact
+    </a>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Transact</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                Choose an option below to perform a transaction!
+            </div>
+            <div class="dropdown mt-3">
+                <select name="transact-type" class="form-control my-3" id="transact-type">
+                    <option value="">-- Select Transaction Type --</option>
+                    <option value="payment">Payment</option>
+                    <option value="transfer">Transfer</option>
+                    <option value="deposit">Deposit</option>
+                    <option value="withdraw">Withdraw</option>
+                </select>
+                <!-- Payments Form Card -->
+<!--                <div th:replace="~{payment_form :: paymentForm}"></div>-->
+                <div class="card deposit-card" th:fragment="paymentForm">
+                    <div class="card-body">
+                        <form th:action="@{/deposit}" method="POST" class="deposit-form">
+                            <div class="form-group mb-2">
+                                <label for=""> Enter Deposit Amount</label>
+                                <input type="text" name="deposit_amount" class="form-control" placeholder="Enter Deposit Amount">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Select Account</label>
+                                <select name="account_id" class="form-control" id="">
+                                    <option value="">-- Select Account --</option>
+                                    <th:block th:if="${userAccounts != null}">
+                                        <th:each th:items="${userAccounts}" var="selectAccount">
+                                            <option th:value="${selectAccount.account_id}" th:text="${selectAccount.accountName}"></option>
+                                        </th:each>
+                                    </th:block>
+                                </select>
+                            </div>
+
+                            <div class="form-group my-2">
+                                <button id="" class="btn btn-md transact-btn" type="submit">Deposit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- Transfer Form Card -->
+                <div th:replace="/transfer_form :: transferForm"></div>
+                <!-- Deposit Form Card -->
+                <div th:replace="/deposit_form :: depositForm"></div>
+                <!-- Withdraw Form Card -->
+                <div th:replace="components/transact_forms/withdraw_form :: withdrawForm"></div>
+            </div>
+        </div>
+    </div>
+</div>

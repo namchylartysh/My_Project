@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment History</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">Payment History</div>
+        <div class="card-body">
+            <th:block th:if="${payment_history != null}">
+                <table class="table text-center table-striped">
+                    <tr>
+                        <th>Record Number</th>
+                        <th>Recipient</th>
+                        <th>Recipient Account Number</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Reference</th>
+                        <th>Reason Code</th>
+                        <th>Created at</th>
+                    </tr>
+                    <tr th:each="payment : ${payment_history}">
+                        <td th:text="${payment_history.payment_id}"></td>
+                        <td th:text="${payment_history.recipient}"></td>
+                        <td th:text="${payment_history.recipient_account_number}"></td>
+                        <td th:text="${payment_history.amount}"></td>
+                        <td th:text="${payment_history.status}"></td>
+                        <td th:text="${payment_history.reference_number}"></td>
+                        <td th:text="${payment_history.reason_code}"></td>
+                        <td th:text="${payment_history.created_at}"></td>
+                    </tr>
+                </table>
+            </th:block>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

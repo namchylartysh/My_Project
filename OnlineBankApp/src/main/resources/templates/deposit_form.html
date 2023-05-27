@@ -1,0 +1,26 @@
+<div class="card deposit-card" th:fragment="depositForm">
+    <div class="card-body">
+        <form th:action="@{/transact/deposit}" method="POST" class="deposit-form">
+            <div class="mb-3">
+                <label th:for="deposit" class="form-label">Select Account</label>
+                <select name="account_id" class="form-control" id="account">
+                    <option th:for="account_id">-- Select Account --</option>
+                    <th:block th:if="${userAccounts != null}">
+                        <th:block th:each="selectAccount : ${userAccounts}">
+                            <option th:value="${selectAccount.account_id}" th:text="${selectAccount.account_name}"></option>
+                        </th:block>
+                    </th:block>
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+                <label th:for="deposit_amount"> Enter Deposit Amount</label>
+                <input type="text" name="deposit_amount" class="form-control" placeholder="Enter Deposit Amount">
+            </div>
+
+            <div class="form-group my-2">
+                <button id="depositBtn" class="btn btn-md transact-btn" type="submit" value="Submit">Deposit</button>
+            </div>
+        </form>
+    </div>
+</div>

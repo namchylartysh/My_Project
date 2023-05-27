@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction History</title>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-header">Transaction History</div>
+        <div class="card-body">
+            <th:block th:if="${transaction_history != null}">
+                <table class="table text-center table-striped">
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Transaction Type</th>
+                        <th>Amount</th>
+                        <th>Source</th>
+                        <th>Status</th>
+                        <th>Reason Code</th>
+                        <th>Created at</th>
+                    </tr>
+                    <tr th:each="transaction : ${transaction_history}">
+                        <td th:text="${transaction.transaction_id}"></td>
+                        <td th:text="${transaction.transaction_type}"></td>
+                        <td th:text="${transaction.amount}"></td>
+                        <td th:text="${transaction.source}"></td>
+                        <td th:text="${transaction.status}"></td>
+                        <td th:text="${transaction.reason_code}"></td>
+                        <td th:text="${transaction.created_at}"></td>
+                    </tr>
+                </table>
+            </th:block>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

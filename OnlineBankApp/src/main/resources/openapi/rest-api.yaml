@@ -1,0 +1,306 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Bank Rest API
+
+tags:
+  - name: BankRest
+    description: Bank rest CRUD API
+
+paths:
+  /account/create_account:
+    post:
+      tags:
+        - BankRest
+      summary: Create a new account
+      description: Create a new account
+      operationId: create_account
+      requestBody:
+        description: Data to create
+        required: true
+        content:
+          'application/json':
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: integer
+                account_number:
+                  type: string
+                account_name:
+                  type: string
+                account_type:
+                  type: string
+                balance:
+                  type: integer
+                  default: 0
+                created_at:
+                  type: number
+              required:
+                - account_id
+                - account_number
+                - account_name
+                - account_type
+                - balance
+                - created_at
+      responses:
+        '200':
+          description: Account created successfully
+          content:
+            'application/json':
+              schema:
+                type: object
+        '404':
+          description: Creation failed
+
+  /app/display_accounts/{id}:
+    get:
+      tags:
+        - BankRest
+      summary: View user's accounts
+      description: View all accounts of user
+      operationId: display_accounts
+      parameters:
+        - name: id
+          in: path
+          description: user_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountListResponse'
+        '302':
+          description: Redirect to login page
+
+  /app/transaction_history:
+    get:
+      tags:
+        - BankRest
+      summary: Get transaction history
+      description: Get transaction history of users
+      operationId: transaction_history
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionHistoryListResponse'
+
+
+  /account/delete_account/{id}:
+    delete:
+      tags:
+        - BankRest
+      summary: Delete an account
+      description: Deleting an account
+      operationId: delete_account
+      parameters:
+        - name: id
+          in: path
+          description: account_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Account deleted successfully
+        '404':
+          description: Deleting failed
+
+  /transact/deposit:
+    post:
+      tags:
+        - BankRest
+      summary: Deposit amount to an account
+      description: Deposit amount
+      operationId: deposit
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              type: object
+              properties:
+                deposit_amount:
+                  type: integer
+                deposit_id:
+                  type: integer
+              required:
+                - deposit_amount
+                - account_id
+      responses:
+        '200':
+          description: Amount deposited successfully
+        '404':
+          description: Deposit failed
+
+  /transact/transfer:
+    post:
+      tags:
+        - BankRest
+      summary: Transfer amount between accounts
+      description: Transferring amount between accounts
+      operationId: transfer
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              type: object
+              properties:
+                transfer_from:
+                  type: string
+                transfer_to:
+                  type: string
+                transfer_amount:
+                  type: integer
+              required:
+                - transfer_from
+                - transfer_to
+                - transfer_amount
+      responses:
+        '200':
+          description: Amount transferred successfully
+        '400':
+          description: Transfer failed
+
+  /transact/withdraw:
+    post:
+      tags:
+        - BankRest
+      summary: Withdraw amount from an account
+      description: Withdrawal amount from an account
+      operationId: withdraw
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              type: object
+              properties:
+                withdrawal_amount:
+                  type: integer
+                account_id:
+                  type: integer
+              required:
+                - withdrawal_amount
+                - account_id
+      responses:
+        '200':
+          description: Amount withdrawn successfully
+        '400':
+          description: Withdrawal failed
+
+  /transact/payment:
+    post:
+      tags:
+        - BankRest
+      summary: Make a payment from an account
+      description: Payment from an account
+      operationId: payment
+      requestBody:
+        required: true
+        content:
+          'application/json':
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: string
+                account_number:
+                  type: string
+                account_id:
+                  type: string
+                reference:
+                  type: string
+                payment_amount:
+                  type: integer
+              required:
+                - recipient
+                - account_number
+                - account_id
+                - reference
+                - payment_amount
+      responses:
+        '200':
+          description: Payment made successfully
+        '400':
+          description: Payment failed
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+        accountName:
+          type: string
+        accountType:
+          type: string
+        balance:
+          type: number
+      required:
+        - accountNumber
+        - accountName
+        - accountType
+        - balance
+
+    AccountListResponse:
+      type: object
+      properties:
+        admin:
+          $ref: '#/components/schemas/User'
+        user:
+          $ref: '#/components/schemas/User'
+        thisUserAccounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+      required:
+        - id
+        - name
+        - email
+    TransactionHistory:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        transactionType:
+          type: string
+        amount:
+          type: number
+        date:
+          type: string
+      required:
+        - id
+        - userId
+        - transactionType
+        - amount
+        - date
+
+    TransactionHistoryListResponse:
+      type: object
+      properties:
+        transaction_history:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionHistory'

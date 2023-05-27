@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <title>Transaction History</title>
+</head>
+<body>
+
+<nav th:fragment="navigation" class="navbar navbar-expand">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="/static/images/logo-main.png" alt="" width="240" height="80" class="d-inline-block align-text-top" style="color-rendering: auto">
+        </a>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="nav-item">
+                    <a class="nav-link" style="color: indigo" th:href="@{/app/dashboard}">Dashboard</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">Transaction History</div>
+        <div class="card-body">
+            <th:block th:if="${transaction_history != null}">
+                <table class="table text-center table-striped">
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Transaction Type</th>
+                        <th>Amount</th>
+                        <th>Source</th>
+                        <th>Status</th>
+                        <th>Reason Code</th>
+                        <th>Created at</th>
+                    </tr>
+                    <tr th:each="transaction : ${transaction_history}">
+                        <td th:text="${transaction.transaction_id}"></td>
+                        <td th:text="${transaction.transaction_type}"></td>
+                        <td th:text="${transaction.amount}"></td>
+                        <td th:text="${transaction.source}"></td>
+                        <td th:text="${transaction.status}"></td>
+                        <td th:text="${transaction.reason_code}"></td>
+                        <td th:text="${transaction.created_at}"></td>
+                    </tr>
+                </table>
+            </th:block>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

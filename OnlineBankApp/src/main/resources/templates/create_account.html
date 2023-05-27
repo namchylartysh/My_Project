@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Creation of Account</title>
+</head>
+<body>
+
+
+  <div class="offcanvas">
+    <div>
+      <form th:action="@{/account/create_account}"  method="POST" class="add-account-form">
+
+        <div class="form-group mb-3">
+          <label for=""> Enter Account Name</label>
+          <input type="text" th:name="accountName" class="form-control" placeholder="Enter Account name...">
+        </div>
+
+        <div>
+          <label for=""> Select Account Type</label>
+          <select type="text" th:name="accountType" id="">
+            <option value="">-- Select Account Type --</option>
+            <option value="cheque">Check</option>
+            <option value="savings">Savings</option>
+            <option value="business">Business</option>
+          </select>
+        </div>
+        <div>
+          <button type="submit">Create an account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

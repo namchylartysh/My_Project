@@ -1,0 +1,34 @@
+<div class="card transfer-card" th:fragment="transferForm">
+    <div class="card-body">
+        <form th:action="@{/transact/transfer}" method="POST" class="transfer-form">
+            <div class="form-group">
+                <label for="transfer_from">Select Account</label>
+                <select name="transfer_from" class="form-control" id="transfer_from">
+                    <option value="">-- Select Account --</option>
+                    <th:block th:if="${userAccounts != null}">
+                        <option th:each="selectAccount : ${userAccounts}" th:value="${selectAccount.account_id}" th:text="${selectAccount.account_name}"></option>
+                    </th:block>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="transfer_to">Select Account</label>
+                <select name="transfer_to" class="form-control" id="transfer_to">
+                    <option value="">-- Select Account --</option>
+                    <th:block th:if="${userAccounts != null}">
+                        <option th:each="selectAccount : ${userAccounts}" th:value="${selectAccount.account_id}" th:text="${selectAccount.accountName}"></option>
+                    </th:block>
+                </select>
+            </div>
+
+            <div class="form-group mb-2">
+                <label>Enter Transfer Amount</label>
+                <input type="text" name="transfer_amount" class="form-control" placeholder="Enter Transfer Amount">
+            </div>
+
+            <div class="form-group my-2">
+                <button id="transferBtn" class="btn btn-md transact-btn" type="submit">Transfer</button>
+            </div>
+        </form>
+    </div>
+</div>

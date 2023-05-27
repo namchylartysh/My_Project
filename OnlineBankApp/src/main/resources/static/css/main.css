@@ -1,0 +1,109 @@
+*{
+    box-sizing: border-box;
+    font-family: Comfortaa, sans-serif;
+}
+
+body{
+    height: 100vh;
+    background-image: url("../images/new-dashboard.jpeg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.navbar navbar-expand-lg {
+    padding-top: 10%;
+}
+.container-fluid {
+    background-color: #BBE2F7;
+}
+
+.navigation li{
+    display: inline-block;
+    list-style-type: none;
+    margin: 0px 15px;
+}
+
+/* <!-- Display Name --> */
+.display-name {
+    font-weight: 600;
+}
+
+/* Transact Button */
+#transact-btn{
+    background-color: #3F8FD2;
+    border: 1px solid #52026E;
+    margin-left: 10px;
+    padding-left: 20px;
+}
+
+/* Add Accounts Button */
+#add-account-btn{
+    background-color: #3F8FD2;
+    border: 1px solid #52026E;
+    color: white;
+    margin-right: 10px;
+    padding-left: 20px;
+}
+
+/* Offcanvas Background */
+.offcanvas{
+    background-image: url("../images/offcanvas-bgd.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.transact-btn{
+    background-color: #FF4E00;
+    border: 1px solid #8B2B00;
+    color: white;
+}
+
+/*  <!-- Card: Payment Card --> */
+.payment-card{
+    display: none;
+}
+
+/*  <!-- Card: transfer Card --> */
+.transfer-card{
+    display: none;
+}
+
+/*  <!-- Card: deposit Card --> */
+.deposit-card{
+    display: none;
+}
+
+/*  <!-- Card: withdraw Card --> */
+.withdraw-card{
+    display: none;
+}
+
+.modal-title {
+    padding-left: 70px;
+    color: #164E94;
+    font-family: Comfortaa, serif;
+}
+
+.text-title {
+    padding-left: 50px;
+    font-size: x-large;
+}
+
+.card-link {
+    padding-left: 80px;
+}
+
+.d-inline-block align-text-top {
+    padding-top: 60px;
+    margin-top: 80px;
+}
+
+.nav-item {
+    text-decoration-color: white;
+}
+
+.btn btn-sm text-white ms-2 {
+    color: black;
+}
+

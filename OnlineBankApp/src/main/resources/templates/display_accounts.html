@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/accountDisplay.css">
+    <title>Display Accounts</title>
+</head>
+<body>
+<nav th:fragment="navigation" class="navbar navbar-expand">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="/static/images/logo-main.png" alt="" width="240" height="80" class="d-inline-block align-text-top" style="color-rendering: auto">
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: indigo" th:href="@{/app/dashboard_admin}">Dashboard</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="color: indigo" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Learn about
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Swagger</a></li>
+                        <li><a class="dropdown-item" href="#">Used Technologies</a></li>
+                        <li><a class="dropdown-item" href="#">Rest API</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="display-name ms-auto text-black-50">
+            <i class="fa fa-circle text-success me-2"></i> Administrator: <span th:text="${admin.firstName}"></span>
+        </div>
+        <a th:href="@{/logout}" class="btn btn-sm text-black-50 ms-2">
+            <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Sign Out
+        </a>
+    </div>
+</nav>
+<div>
+    <div class="container-md" id="containerExample">
+        <div th:if="${thisUserAccounts != null}">
+            <div th:each="account : ${thisUserAccounts}">
+                <ul class="list-group list-group-horizontal" th:id="'containerExample' + ${account.account_id}" th:data-bs-parent="'#container-md' + ${account.account_id}">
+                    <li class="list-group-item">Account Name <span class="ms-auto"><b>[[${account.accountName}]]</b></span></li>
+                    <li class="list-group-item">Account Number <span class="ms-auto"><b>[[${account.accountNumber}]]</b></span></li>
+                    <li class="list-group-item">Account Type <span class="ms-auto"><b>[[${account.accountType}]]</b></span></li>
+                    <li class="list-group-item">Account Balance <span class="ms-auto"><b>[[${account.balance}]]</b></span></li>
+                    <li class="list-group-item">Created at <span class="ms-auto"><b>[[${account.created_at}]]</b></span></li>
+                </ul>
+
+            </div>
+        </div>
+        <div th:if="${thisUserAccounts == null}">
+            <h1>This user has no account</h1>
+        </div>
+    </div>
+</div>
+</body>
