@@ -26,8 +26,8 @@ public class UserService {
 
     public User findById(Integer id) {
         logger.fatal("Executing findById method with id: " + id);
-        return userRepository.findById(id)
-                .orElseThrow(NoSuchElementException::new);
+        Optional<User> userOptional = userRepository.findById(id);
+        return userOptional.orElse(null);
     }
 
     public void save(User user) {

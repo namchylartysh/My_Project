@@ -8,7 +8,7 @@ tags:
     description: Bank rest CRUD API
 
 paths:
-  /account/create_account:
+  /app/create_account:
     post:
       tags:
         - BankRest
@@ -53,7 +53,7 @@ paths:
         '404':
           description: Creation failed
 
-  /app/display_accounts/{id}:
+  /display_accounts/{id}:
     get:
       tags:
         - BankRest
@@ -77,7 +77,7 @@ paths:
         '302':
           description: Redirect to login page
 
-  /app/transaction_history:
+  /transaction_history:
     get:
       tags:
         - BankRest
@@ -113,7 +113,7 @@ paths:
         '404':
           description: Deleting failed
 
-  /transact/deposit:
+  /deposit:
     post:
       tags:
         - BankRest
@@ -140,7 +140,7 @@ paths:
         '404':
           description: Deposit failed
 
-  /transact/transfer:
+  /transfer:
     post:
       tags:
         - BankRest

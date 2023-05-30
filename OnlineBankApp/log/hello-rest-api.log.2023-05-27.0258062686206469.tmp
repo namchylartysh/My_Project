@@ -1,0 +1,167 @@
+2023-05-28 00:30:30.484  INFO 54603 --- [main] online.bank.app.BankApplication          : Starting BankApplication using Java 17.0.3 on Air-artysh with PID 54603 (/Users/artysh/OnlineBankApp/target/classes started by artysh in /Users/artysh/OnlineBankApp)
+2023-05-28 00:30:30.510  INFO 54603 --- [main] online.bank.app.BankApplication          : No active profile set, falling back to 1 default profile: "default"
+2023-05-28 00:30:33.149  INFO 54603 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-28 00:30:33.320  INFO 54603 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 146 ms. Found 6 JPA repository interfaces.
+2023-05-28 00:30:35.184  INFO 54603 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8033 (http)
+2023-05-28 00:30:35.237  INFO 54603 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 00:30:35.238  INFO 54603 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-05-28 00:30:36.028  INFO 54603 --- [main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-05-28 00:30:36.051  INFO 54603 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 00:30:36.052  INFO 54603 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4918 ms
+2023-05-28 00:30:36.458  INFO 54603 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 00:30:37.048  INFO 54603 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 00:30:37.552  INFO 54603 --- [main] liquibase.database                       : Set default schema name to public
+2023-05-28 00:30:37.812  INFO 54603 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
+2023-05-28 00:30:38.896  INFO 54603 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2023-05-28 00:30:39.321  INFO 54603 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2023-05-28 00:30:39.630  INFO 54603 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 00:30:39.850  INFO 54603 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 00:30:40.276  INFO 54603 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 00:30:40.564  INFO 54603 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-05-28 00:30:42.649  INFO 54603 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 00:30:42.667  INFO 54603 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 00:30:45.013  WARN 54603 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-28 00:30:48.246  WARN 54603 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8033 is already in use
+2023-05-28 00:30:48.268  INFO 54603 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 00:30:48.272  INFO 54603 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 00:30:48.280  INFO 54603 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 00:30:48.297  INFO 54603 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-05-28 00:30:48.452  INFO 54603 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-05-28 00:30:48.601 ERROR 54603 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8033 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8033 or configure this application to listen on another port.
+
+2023-05-28 00:31:31.132  INFO 54629 --- [main] online.bank.app.BankApplication          : Starting BankApplication using Java 17.0.3 on Air-artysh with PID 54629 (/Users/artysh/OnlineBankApp/target/classes started by artysh in /Users/artysh/OnlineBankApp)
+2023-05-28 00:31:31.151  INFO 54629 --- [main] online.bank.app.BankApplication          : No active profile set, falling back to 1 default profile: "default"
+2023-05-28 00:31:33.444  INFO 54629 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-28 00:31:33.592  INFO 54629 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 126 ms. Found 6 JPA repository interfaces.
+2023-05-28 00:31:35.022  INFO 54629 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8034 (http)
+2023-05-28 00:31:35.064  INFO 54629 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-28 00:31:35.065  INFO 54629 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-05-28 00:31:35.888  INFO 54629 --- [main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-05-28 00:31:35.905  INFO 54629 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-28 00:31:35.906  INFO 54629 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4481 ms
+2023-05-28 00:31:36.504  INFO 54629 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 00:31:37.866  INFO 54629 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 00:31:38.365  INFO 54629 --- [main] liquibase.database                       : Set default schema name to public
+2023-05-28 00:31:38.859  INFO 54629 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
+2023-05-28 00:31:39.675  INFO 54629 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2023-05-28 00:31:40.068  INFO 54629 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2023-05-28 00:31:40.199  INFO 54629 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 00:31:40.358  INFO 54629 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 00:31:40.804  INFO 54629 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 00:31:41.046  INFO 54629 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-05-28 00:31:42.718  INFO 54629 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 00:31:42.735  INFO 54629 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 00:31:44.098  WARN 54629 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-28 00:31:46.259  INFO 54629 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8034 (http) with context path ''
+2023-05-28 00:31:46.320  INFO 54629 --- [main] online.bank.app.BankApplication          : Started BankApplication in 17.113 seconds (JVM running for 19.149)
+2023-05-28 00:38:42.095  INFO 54757 --- [main] o.bank.app.services.AccountServiceTest   : Starting AccountServiceTest using Java 17.0.3 on Air-artysh with PID 54757 (started by artysh in /Users/artysh/OnlineBankApp)
+2023-05-28 00:38:42.098  INFO 54757 --- [main] o.bank.app.services.AccountServiceTest   : No active profile set, falling back to 1 default profile: "default"
+2023-05-28 00:38:44.505  INFO 54757 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-28 00:38:44.677  INFO 54757 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 147 ms. Found 6 JPA repository interfaces.
+2023-05-28 00:38:46.175  INFO 54757 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 00:38:46.693  INFO 54757 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 00:38:47.154  INFO 54757 --- [main] liquibase.database                       : Set default schema name to public
+2023-05-28 00:38:47.566  INFO 54757 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
+2023-05-28 00:38:48.310  INFO 54757 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2023-05-28 00:38:48.476  INFO 54757 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2023-05-28 00:38:48.678  INFO 54757 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 00:38:48.817  INFO 54757 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 00:38:49.260  INFO 54757 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 00:38:49.547  INFO 54757 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-05-28 00:38:52.853  INFO 54757 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 00:38:52.879  INFO 54757 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 00:38:54.840  WARN 54757 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-28 00:38:57.528  INFO 54757 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/bankapp'
+2023-05-28 00:38:57.957  INFO 54757 --- [main] o.bank.app.services.AccountServiceTest   : Started AccountServiceTest in 17.031 seconds (JVM running for 20.854)
+2023-05-28 00:38:58.562  INFO 54757 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 00:38:58.566  INFO 54757 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 00:38:58.572  INFO 54757 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 00:42:44.455  INFO 54842 --- [main] o.bank.app.services.UserServiceTest      : Starting UserServiceTest using Java 17.0.3 on Air-artysh with PID 54842 (started by artysh in /Users/artysh/OnlineBankApp)
+2023-05-28 00:42:44.460  INFO 54842 --- [main] o.bank.app.services.UserServiceTest      : No active profile set, falling back to 1 default profile: "default"
+2023-05-28 00:42:46.590  INFO 54842 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-28 00:42:46.749  INFO 54842 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 138 ms. Found 6 JPA repository interfaces.
+2023-05-28 00:42:48.133  INFO 54842 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 00:42:48.705  INFO 54842 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 00:42:49.067  INFO 54842 --- [main] liquibase.database                       : Set default schema name to public
+2023-05-28 00:42:49.368  INFO 54842 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
+2023-05-28 00:42:50.209  INFO 54842 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2023-05-28 00:42:50.399  INFO 54842 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2023-05-28 00:42:50.605  INFO 54842 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 00:42:50.776  INFO 54842 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 00:42:51.188  INFO 54842 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 00:42:51.441  INFO 54842 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-05-28 00:42:53.260  INFO 54842 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 00:42:53.279  INFO 54842 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 00:42:54.698  WARN 54842 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-28 00:42:57.763  INFO 54842 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/bankapp'
+2023-05-28 00:42:58.252  INFO 54842 --- [main] o.bank.app.services.UserServiceTest      : Started UserServiceTest in 15.108 seconds (JVM running for 19.09)
+2023-05-28 00:42:58.872  INFO 54842 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 00:42:58.878  INFO 54842 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 00:42:58.883  INFO 54842 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 00:46:21.152  INFO 54932 --- [main] o.bank.app.services.UserServiceTest      : Starting UserServiceTest using Java 17.0.3 on Air-artysh with PID 54932 (started by artysh in /Users/artysh/OnlineBankApp)
+2023-05-28 00:46:21.156  INFO 54932 --- [main] o.bank.app.services.UserServiceTest      : No active profile set, falling back to 1 default profile: "default"
+2023-05-28 00:46:23.525  INFO 54932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-28 00:46:23.714  INFO 54932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 158 ms. Found 6 JPA repository interfaces.
+2023-05-28 00:46:24.967  INFO 54932 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 00:46:25.426  INFO 54932 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 00:46:25.810  INFO 54932 --- [main] liquibase.database                       : Set default schema name to public
+2023-05-28 00:46:26.100  INFO 54932 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
+2023-05-28 00:46:26.849  INFO 54932 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2023-05-28 00:46:26.990  INFO 54932 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2023-05-28 00:46:27.225  INFO 54932 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 00:46:27.359  INFO 54932 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 00:46:27.758  INFO 54932 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 00:46:28.045  INFO 54932 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-05-28 00:46:29.994  INFO 54932 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 00:46:30.013  INFO 54932 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 00:46:31.626  WARN 54932 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-28 00:46:34.368  INFO 54932 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/bankapp'
+2023-05-28 00:46:34.733  INFO 54932 --- [main] o.bank.app.services.UserServiceTest      : Started UserServiceTest in 14.441 seconds (JVM running for 18.1)
+2023-05-28 00:46:35.243 ERROR 54932 --- [main] online.bank.app.services.UserService     : Executing findAll method
+2023-05-28 00:46:35.845 ERROR 54932 --- [main] online.bank.app.services.UserService     : Executing findAll method
+2023-05-28 00:46:35.899  INFO 54932 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 00:46:35.907  INFO 54932 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 00:46:35.915  INFO 54932 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 01:03:18.527  INFO 55196 --- [main] o.bank.app.services.UserServiceTest      : Starting UserServiceTest using Java 17.0.3 on Air-artysh with PID 55196 (started by artysh in /Users/artysh/OnlineBankApp)
+2023-05-28 01:03:18.544  INFO 55196 --- [main] o.bank.app.services.UserServiceTest      : No active profile set, falling back to 1 default profile: "default"
+2023-05-28 01:03:23.242  INFO 55196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-28 01:03:23.759  INFO 55196 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 489 ms. Found 6 JPA repository interfaces.
+2023-05-28 01:03:26.516  INFO 55196 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-28 01:03:27.161  INFO 55196 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-28 01:03:27.552  INFO 55196 --- [main] liquibase.database                       : Set default schema name to public
+2023-05-28 01:03:27.820  INFO 55196 --- [main] liquibase.lockservice                    : Successfully acquired change log lock
+2023-05-28 01:03:28.979  INFO 55196 --- [main] liquibase.changelog                      : Reading from public.databasechangelog
+2023-05-28 01:03:29.183  INFO 55196 --- [main] liquibase.lockservice                    : Successfully released change log lock
+2023-05-28 01:03:29.475  INFO 55196 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-28 01:03:29.695  INFO 55196 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-05-28 01:03:30.218  INFO 55196 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-28 01:03:30.517  INFO 55196 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-05-28 01:03:32.893  INFO 55196 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-28 01:03:32.910  INFO 55196 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 01:03:34.665  WARN 55196 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-28 01:03:38.104  INFO 55196 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/bankapp'
+2023-05-28 01:03:38.272  INFO 55196 --- [main] o.bank.app.services.UserServiceTest      : Started UserServiceTest in 20.823 seconds (JVM running for 25.363)
+2023-05-28 01:03:38.753 ERROR 55196 --- [main] online.bank.app.services.UserService     : Executing findAll method
+2023-05-28 01:03:39.343 ERROR 55196 --- [main] online.bank.app.services.UserService     : Executing findAll method
+2023-05-28 01:03:39.403  INFO 55196 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 01:03:39.408  INFO 55196 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 01:03:39.413  INFO 55196 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-28 14:13:47.437  WARN 54629 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12h56m39s6ms).
+2023-05-28 14:31:48.448  WARN 54629 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m656ms).
+2023-05-28 14:42:46.314  INFO 54629 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-28 14:42:46.371  INFO 54629 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-28 14:42:46.408  INFO 54629 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

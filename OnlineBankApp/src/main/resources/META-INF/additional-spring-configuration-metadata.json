@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.mvc.index.default-redirect-url",
+      "type": "java.lang.String",
+      "description": "Description for spring.mvc.index.default-redirect-url."
+  }
+] }

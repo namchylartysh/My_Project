@@ -23,7 +23,7 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
     List<Account> findAllByUserId(@Param("user_id") int user_id);
 
     @Query(value = "SELECT balance FROM accounts WHERE user_id = :user_id AND account_id = :account_id", nativeQuery = true)
-    double getAccountBalance(@Param("user_id") int user_id, @Param("account_id") int account_id);
+    Double getAccountBalance(@Param("user_id") int user_id, @Param("account_id") int account_id);
 
     @Modifying
     @Query(value ="UPDATE accounts SET balance = :new_balance WHERE account_id = :account_id" , nativeQuery = true)
