@@ -8,52 +8,102 @@ tags:
     description: Bank rest CRUD API
 
 paths:
-  /app/create_account:
+  /register:
+    post:
+      tags:
+        - BankRest
+      summary: Register a new user to the bank system
+      description: Register a new user to the bank system
+      operationId: registerUser
+      requestBody:
+        description: Data to register a new user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          description: New user registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#UserVO'
+        '404':
+          description: Registration failed
+  /login:
+    post:
+      tags:
+        - BankRest
+      summary: Logs user into the system
+      description: Login of user
+      operationId: loginUser
+      parameters:
+        - name: email
+          in: query
+          description: The email for login
+          required: false
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: The password for login in clear text
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#UserVO'
+        '400':
+          description: Invalid email/password supplied
+  /account/create_account:
     post:
       tags:
         - BankRest
       summary: Create a new account
       description: Create a new account
-      operationId: create_account
+      operationId: createAccount
       requestBody:
-        description: Data to create
-        required: true
+        description: Data to create a new account
         content:
-          'application/json':
+          application/json:
             schema:
-              type: object
-              properties:
-                account_id:
-                  type: integer
-                account_number:
-                  type: string
-                account_name:
-                  type: string
-                account_type:
-                  type: string
-                balance:
-                  type: integer
-                  default: 0
-                created_at:
-                  type: number
-              required:
-                - account_id
-                - account_number
-                - account_name
-                - account_type
-                - balance
-                - created_at
+              $ref: '#components/schemas/Account'
+        required: true
       responses:
         '200':
           description: Account created successfully
           content:
-            'application/json':
+            application/json:
               schema:
-                type: object
+                $ref: '#AccountVO'
         '404':
-          description: Creation failed
-
-  /display_accounts/{id}:
+          description: Creation of account failed
+  /account/delete_account/{id}:
+    delete:
+      tags:
+        - BankRest
+      summary: Delete an account
+      description: Deleting an account
+      operationId: deleteAccount
+      parameters:
+        - name: id
+          in: path
+          description: Account id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Account deleted successfully
+        '404':
+          description: Invalid account value
+  /app/display_accounts/{id}:
     get:
       tags:
         - BankRest
@@ -63,7 +113,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: user_id
+          description: The user id whose accounts to be shown
           required: true
           schema:
             type: integer
@@ -73,47 +123,41 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountListResponse'
-        '302':
-          description: Redirect to login page
-
-  /transaction_history:
+                type: array
+                items:
+                  $ref: '#AccountVO'
+        '400':
+          description: Invalid user id supplied
+        '404':
+          description: user id not found
+  /app/transaction_history/{id}:
     get:
       tags:
         - BankRest
-      summary: Get transaction history
-      description: Get transaction history of users
+      summary: Get transaction history of user
+      description: Get transaction history of user
       operationId: transaction_history
+      parameters:
+        - name: id
+          in: path
+          description: The user id which transaction history to be demonstrated
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TransactionHistoryListResponse'
-
-
-  /account/delete_account/{id}:
-    delete:
-      tags:
-        - BankRest
-      summary: Delete an account
-      description: Deleting an account
-      operationId: delete_account
-      parameters:
-        - name: id
-          in: path
-          description: account_id
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Account deleted successfully
+                type: array
+                items:
+                  $ref: '#components/schemas/TransactionHistoryListResponse'
+        '400':
+          description: Invalid user id supplied
         '404':
-          description: Deleting failed
-
-  /deposit:
+          description: user id not found
+  /transact/deposit:
     post:
       tags:
         - BankRest
@@ -123,24 +167,24 @@ paths:
       requestBody:
         required: true
         content:
-          'application/json':
+          application/json:
             schema:
               type: object
               properties:
-                deposit_amount:
+                depositAmount:
                   type: integer
-                deposit_id:
+                accountId:
                   type: integer
               required:
-                - deposit_amount
-                - account_id
+                - depositAmount
+                - accountId
       responses:
         '200':
           description: Amount deposited successfully
         '404':
           description: Deposit failed
 
-  /transfer:
+  /transact/transfer:
     post:
       tags:
         - BankRest
@@ -150,20 +194,25 @@ paths:
       requestBody:
         required: true
         content:
-          'application/json':
+          application/json:
             schema:
               type: object
               properties:
-                transfer_from:
-                  type: string
-                transfer_to:
-                  type: string
-                transfer_amount:
+                userId:
                   type: integer
+                  format: int32
+                transferFrom:
+                  type: string
+                transferTo:
+                  type: string
+                transferAmount:
+                  type: integer
+                  format: int32
               required:
-                - transfer_from
-                - transfer_to
-                - transfer_amount
+                - userId
+                - transferFrom
+                - transferTo
+                - transferAmount
       responses:
         '200':
           description: Amount transferred successfully
@@ -184,19 +233,18 @@ paths:
             schema:
               type: object
               properties:
-                withdrawal_amount:
+                withdrawalAmount:
                   type: integer
-                account_id:
+                accountId:
                   type: integer
               required:
-                - withdrawal_amount
-                - account_id
+                - withdrawalAmount
+                - accountId
       responses:
         '200':
           description: Amount withdrawn successfully
         '400':
           description: Withdrawal failed
-
   /transact/payment:
     post:
       tags:
@@ -213,90 +261,105 @@ paths:
               properties:
                 recipient:
                   type: string
-                account_number:
+                accountNumber:
                   type: string
-                account_id:
+                accountId:
                   type: string
                 reference:
                   type: string
-                payment_amount:
+                paymentAmount:
                   type: integer
               required:
                 - recipient
-                - account_number
-                - account_id
+                - accountNumber
+                - accountId
                 - reference
-                - payment_amount
+                - paymentAmount
       responses:
         '200':
           description: Payment made successfully
         '400':
           description: Payment failed
-
 components:
   schemas:
+    User:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int32
+          example: 1
+        firstName:
+          type: string
+          example: Jack
+        lastName:
+          type: string
+          example: Sparrow
+        email:
+          type: string
+          example: user@user.net
+        password:
+          type: string
+          example: '12345'
+        role:
+          type: string
+          description: Role of user
+          example: CLIENT
+          enum:
+            - CLIENT
+            - ADMIN
     Account:
       type: object
       properties:
+        accountId:
+          type: integer
+          format: int32
+          example: 1
         accountNumber:
           type: string
+          example: '0001'
         accountName:
           type: string
+          example: User's Cafe
         accountType:
           type: string
+          example: business
         balance:
           type: number
-      required:
-        - accountNumber
-        - accountName
-        - accountType
-        - balance
-
+        createdAt:
+          type: string
+          format: date-time
     AccountListResponse:
       type: object
       properties:
         admin:
-          $ref: '#/components/schemas/User'
+          $ref: '#UserVO'
         user:
-          $ref: '#/components/schemas/User'
+          $ref: '#UserVO'
         thisUserAccounts:
           type: array
           items:
-            $ref: '#/components/schemas/Account'
-
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        email:
-          type: string
-      required:
-        - id
-        - name
-        - email
+            $ref: '#AccountVO'
     TransactionHistory:
       type: object
       properties:
-        id:
-          type: integer
         userId:
+          type: integer
+        accountId:
           type: integer
         transactionType:
           type: string
         amount:
           type: number
-        date:
+        createdAt:
           type: string
+          format: date-time
       required:
-        - id
+        - accountId
         - userId
         - transactionType
         - amount
-        - date
-
+        - createdAt
     TransactionHistoryListResponse:
       type: object
       properties:

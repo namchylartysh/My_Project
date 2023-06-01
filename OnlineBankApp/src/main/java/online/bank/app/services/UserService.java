@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
-import java.util.NoSuchElementException;
+
 
 @Service
 public class UserService {

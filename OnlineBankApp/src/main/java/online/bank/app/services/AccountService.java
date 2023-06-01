@@ -1,6 +1,8 @@
 package online.bank.app.services;
 
+import online.bank.app.controllers.vo.AccountVO;
 import online.bank.app.models.Account;
+import online.bank.app.models.TransactionHistory;
 import online.bank.app.models.User;
 import online.bank.app.repositories.*;
 import org.apache.logging.log4j.LogManager;
@@ -8,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spring.controller.vo.AccountListResponse;
-import spring.controller.vo.TransactionHistoryListResponse;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
@@ -66,6 +67,17 @@ public class AccountService {
         accountRepository.save(account);
     }
 
+//    public AccountVO createBankAccountVO(int accountId, String accountNumber, String accountName, String accountType, Double balance, LocalDateTime created_at) {
+//        AccountVO account = new AccountVO();
+//        account.setAccount_id(accountId);
+//        account.setAccountNumber(accountNumber);
+//        account.setAccountName(accountName);
+//        account.setAccountType(accountType);
+//        account.setBalance(BigDecimal.valueOf(balance));
+//        account.setCreated_at(created_at);
+//        accountRepository.save(account);
+//        return account;
+//    }
 
     public List<Account> getUserAccountsById(int user_id) {
         logger.fatal("Executing getUserAccountsById method with user_id: " + user_id);
@@ -78,10 +90,6 @@ public class AccountService {
         return accountRepository.getAccountBalance(user_id, account_id);
     }
 
-//    public Double getBalanceAccount(int account_id) {
-//
-//    }
-
     public BigDecimal getTotalBalance(int user_id) {
         logger.fatal("Executing getTotalBalance method with user_id: " + user_id);
         List<Account> userAccounts = getUserAccountsById(user_id);
@@ -93,67 +101,26 @@ public class AccountService {
         return totalBalance;
     }
 
-    public void deposit(int accountId, Double depositAmount) {
-//        currentBalance = accountService.getAccountBalance(user.getUser_id(), account_id);
-//        newBalance = currentBalance + depositAmountValue;
-        accountRepository.changeAccountBalanceById(depositAmount, accountId);
+//    public void deposit(int accountId, Double depositAmount) {
+//        accountRepository.changeAccountBalanceById(depositAmount, accountId);
+//    }
+
+//    public AccountListResponse displayAccounts(Integer id) {
+//        return (AccountListResponse) getUserAccountsById(id);
+//    }
+
+//    public boolean makePayment(String recipient, String accountNumber, int accountId, String reference, int paymentAmount) {
+//        LocalDateTime currentDateTime = LocalDateTime.now();
+//        String reasonCode = "Payment Processed Successfully!";
+//        return paymentRepository.makePayment(accountId, recipient, accountNumber, paymentAmount, reference, "success", reasonCode, currentDateTime);
+//    }
+
+    public List<TransactionHistory> getTransactionHistory(int id) {
+        return transactionHistoryRepository.getTransactionRecordsById(id);
     }
 
-    public AccountListResponse displayAccounts(Integer id) {
-        return (AccountListResponse) getUserAccountsById(id);
+    public Account findById(int accountId) {
+        return accountRepository.findById(accountId).get(0);
     }
 
-    public boolean makePayment(String recipient, String accountNumber, int accountId, String reference, int paymentAmount) {
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        String reasonCode = "Payment Processed Successfully!";
-        return paymentRepository.makePayment(accountId, recipient, accountNumber, paymentAmount, reference, "success", reasonCode, currentDateTime);
-    }
-
-    public TransactionHistoryListResponse getTransactionHistory(int id) {
-        return (TransactionHistoryListResponse) transactionHistoryRepository.getTransactionRecordsById(id);
-    }
-
-    public boolean transferAmount(String transferFrom, String transferTo, int transferAmount, HttpSession session) {
-
-
-        String errorMessage;
-
-        if (transferFrom.isEmpty() || transferTo.isEmpty() || transferAmount <= 0) {
-            errorMessage = "Invalid transfer details. The account transferring from and to along with the amount cannot be empty or zero.";
-            throw new IllegalArgumentException(errorMessage);
-        }
-
-        int transferFromId = Integer.parseInt(transferFrom);
-        int transferToId = Integer.parseInt(transferTo);
-
-
-        if (transferFromId == transferToId) {
-            errorMessage = "Cannot transfer into the same account. Please select the appropriate account to perform the transfer.";
-            throw new IllegalArgumentException(errorMessage);
-        }
-
-        double currentBalanceOfAccountTransferringFrom = getAccountBalance(userService.getCurrentUser(session).getUser_id(), transferFromId);
-
-        if (currentBalanceOfAccountTransferringFrom < transferAmount) {
-            errorMessage = "Insufficient funds to perform this transfer!";
-            throw new IllegalArgumentException(errorMessage);
-        }
-
-        double currentBalanceOfAccountTransferringTo = getAccountBalance(userService.getCurrentUser(session).getUser_id(), transferToId);
-
-        double newBalanceOfAccountTransferringFrom = currentBalanceOfAccountTransferringFrom - transferAmount;
-        double newBalanceOfAccountTransferringTo = currentBalanceOfAccountTransferringTo + transferAmount;
-
-        // Change the balance of the account transferring from:
-        accountRepository.changeAccountBalanceById(newBalanceOfAccountTransferringFrom, transferFromId);
-
-        // Change the balance of the account transferring to:
-        accountRepository.changeAccountBalanceById(newBalanceOfAccountTransferringTo, transferToId);
-
-        return true;
-    }
-
-    public boolean withdraw(int accountId, int withdrawalAmount) {
-        return true;
-    }
 }

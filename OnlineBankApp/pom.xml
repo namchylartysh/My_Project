@@ -167,6 +167,14 @@
                                 <useTags>true</useTags>
                                 <java8>false</java8>
                             </configOptions>
+                            <importMappings>
+                                <schemaMapping>UserVO=online.bank.app.controllers.vo.UserVO</schemaMapping>
+                                <schemaMapping>AccountVO=online.bank.app.controllers.vo.AccountVO</schemaMapping>
+                                <schemaMapping>TransactVO=online.bank.app.controllers.vo.TransactVO</schemaMapping>
+                                <schemaMapping>PaymentVO=online.bank.app.controllers.vo.PaymentVO</schemaMapping>
+                                <schemaMapping>TransactionHistoryVO=online.bank.app.controllers.vo.TransactionHistoryVO</schemaMapping>
+                                <schemaMapping>RoleVO=online.bank.app.controllers.vo.RoleVO</schemaMapping>
+                            </importMappings>
                         </configuration>
                     </execution>
                 </executions>

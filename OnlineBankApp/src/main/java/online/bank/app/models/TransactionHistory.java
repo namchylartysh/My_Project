@@ -3,6 +3,7 @@ package online.bank.app.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,7 +13,7 @@ public class TransactionHistory {
     private int transaction_id;
     private int account_id;
     private String transaction_type;
-    private double amount;
+    private BigDecimal amount;
     private String source;
     private String status;
     private String reason_code;
@@ -42,11 +43,11 @@ public class TransactionHistory {
         this.transaction_type = transaction_type;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
@@ -81,4 +82,6 @@ public class TransactionHistory {
     public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
     }
+
+
 }

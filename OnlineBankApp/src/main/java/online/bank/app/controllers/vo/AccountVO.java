@@ -22,6 +22,34 @@ public class AccountVO {
         this.created_at = created_at;
     }
 
+    public AccountVO() {
+
+    }
+
+    public void setAccount_id(int account_id) {
+        this.account_id = account_id;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public void setCreated_at(LocalDateTime created_at) {
+        this.created_at = created_at;
+    }
+
     public int getAccount_id() {
         return account_id;
     }

@@ -1,5 +1,6 @@
 package online.bank.app.repositories;
 
+import online.bank.app.controllers.vo.AccountVO;
 import online.bank.app.models.Account;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
-    Optional<Account> findById(int account_id);
+    List<Account> findById(int account_id);
 
     @Query(value = "SELECT * FROM accounts WHERE user_id = :user_id", nativeQuery = true)
     List<Account> findAllByUserId(@Param("user_id") int user_id);
@@ -30,4 +31,7 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
     @Transactional
     void changeAccountBalanceById(@Param("new_balance") double new_balance, @Param("account_id") int account_id);
 
+    default void save(AccountVO account) {
+
+    }
 }

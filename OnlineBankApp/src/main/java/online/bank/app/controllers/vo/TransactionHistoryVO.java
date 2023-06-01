@@ -2,17 +2,19 @@ package online.bank.app.controllers.vo;
 
 import online.bank.app.models.TransactionHistory;
 
+import java.math.BigDecimal;
+
 
 public class TransactionHistoryVO {
     private int transaction_id;
     private int account_id;
     private String transaction_type;
-    private double amount;
+    private BigDecimal amount;
     private String source;
     private String status;
     private String reason_code;
 
-    public TransactionHistoryVO(int transaction_id, int account_id, String transaction_type, double amount, String source, String status, String reason_code) {
+    public TransactionHistoryVO(int transaction_id, int account_id, String transaction_type, BigDecimal amount, String source, String status, String reason_code) {
         this.transaction_id = transaction_id;
         this.account_id = account_id;
         this.transaction_type = transaction_type;
@@ -34,7 +36,7 @@ public class TransactionHistoryVO {
         return transaction_type;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
