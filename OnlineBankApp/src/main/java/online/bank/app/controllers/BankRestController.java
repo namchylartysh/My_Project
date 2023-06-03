@@ -72,7 +72,6 @@ public class BankRestController implements BankRestApi {
         BigDecimal newBalance = currentBalance.add(BigDecimal.valueOf(amount));
         account.setBalance(newBalance);
         accountRepository.save(account);
-//        accountRepository.changeAccountBalanceById(amount, accountId);
         return ResponseEntity.ok().build();
     }
 
@@ -80,12 +79,10 @@ public class BankRestController implements BankRestApi {
     public ResponseEntity<List<AccountVO>> displayAccounts(Integer id) {
         List<Account> accounts = accountRepository.findAllByUserId(id);
         List<AccountVO> accountVOs = new ArrayList<>();
-
         for (Account account : accounts) {
             AccountVO accountVO = AccountVO.valueOf(account);
             accountVOs.add(accountVO);
         }
-
         return ResponseEntity.ok(accountVOs);
     }
 
@@ -117,13 +114,6 @@ public class BankRestController implements BankRestApi {
         BigDecimal currentBalance = account.getBalance();
         BigDecimal paymentAmountBigDecimal = BigDecimal.valueOf(paymentAmount);
 
-//        if (currentBalance.compareTo(paymentAmountBigDecimal) < 0) {
-//            errorMessage = "You Have Insufficient Funds to Perform This Payment";
-//            String reasonCode = "Could Not Process Payment Due to Insufficient Funds!";
-//            paymentRepository.makePayment(accountID, recipient, accountNumber, paymentAmount, reference, "failed", reasonCode, LocalDateTime.now());
-//            return ResponseEntity.badRequest().body(errorMessage);
-//        }
-
         BigDecimal newBalance = currentBalance.subtract(paymentAmountBigDecimal);
 
         String reasonCode = "Payment Processed Successfully!";
@@ -134,19 +124,6 @@ public class BankRestController implements BankRestApi {
 
         successMessage = reasonCode;
         return ResponseEntity.ok().build();
-
-//        int accountId = Integer.parseInt(inlineObject3.getAccountId());
-//        BigDecimal amount = BigDecimal.valueOf(inlineObject3.getPaymentAmount());
-//
-//        Account account = accountService.findById(accountId);
-//
-//        BigDecimal currentBalance = account.getBalance();
-//
-//        BigDecimal newBalance = currentBalance.subtract(amount);
-//        account.setBalance(newBalance);
-//        accountRepository.save(account);
-//
-//        return ResponseEntity.ok().build();
     }
 
     @Override

@@ -1,7 +1,5 @@
 package online.bank.app.models;
 
-import online.bank.app.helpers.Token;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -36,8 +34,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-
-
     public User(int user_id, String firstName, String lastName, String email, String password, Role role) {
         this.user_id = user_id;
         this.firstName = firstName;
@@ -50,9 +46,6 @@ public class User {
     public User() {
 
     }
-
-//    public User(String firstName, String lastName, String email, String password, Role role) {
-//    }
 
     public Role getRole() {
         return role;

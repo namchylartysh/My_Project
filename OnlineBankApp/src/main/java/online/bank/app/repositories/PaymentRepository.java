@@ -16,7 +16,7 @@ public interface PaymentRepository extends JpaRepository<Payment, Integer> {
     @Query(value = " INSERT INTO payments(account_id, recipient, recipient_account_number, amount, reference_number, status, reason_code, created_at) " +
             "VALUES(:account_id,:recipient, :recipient_account_number, :amount, :reference_number, :status, :reason_code, :created_at )", nativeQuery = true)
     @Transactional
-    boolean makePayment(@Param("account_id") int account_id,
+    void makePayment(@Param("account_id") int account_id,
                      @Param("recipient") String recipient,
                      @Param("recipient_account_number") String recipient_account_number,
                      @Param("amount") double amount,

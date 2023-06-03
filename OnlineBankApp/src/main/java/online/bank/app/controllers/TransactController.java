@@ -115,10 +115,8 @@ public class TransactController {
 
         double newBalanceOfAccountTransferringTo = currentBalanceOfAccountTransferringTo + transferAmount;
 
-        // Changed The Balance Of the Account Transferring From:
         accountRepository.changeAccountBalanceById( newBalanceOfAccountTransferringFrom, transferFromId);
 
-        // Changed The Balance Of the Account Transferring To:
         accountRepository.changeAccountBalanceById(newBalanceOfAccountTransferringTo, transferToId);
 
         transactRepository.recordTransaction(transferFromId, "Transfer", transferAmount, "online", "success", "Transfer Transaction Successful",currentDateTime, user.getUser_id());
