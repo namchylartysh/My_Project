@@ -9,25 +9,26 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id")
     private int productId;
 
-    @Column(name = "price")
-    private int price;
+    @Column(name = "price", nullable = false)
+    private double price;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "transactionId")
+    @JoinColumn(name = "transaction_id")
     private Transaction transaction;
 
-    @Column(nullable = false)
+    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
-
-    public Product(int productId, int price) {
-        this.productId = productId;
-        this.price = price;
-    }
 
     public Product() {
 
+    }
+
+    public Product(int productId, double price) {
+        this.productId = productId;
+        this.price = price;
     }
 
     public int getProductId() {
@@ -38,11 +39,11 @@ public class Product {
         this.productId = productId;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

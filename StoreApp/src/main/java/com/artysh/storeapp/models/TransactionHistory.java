@@ -1,29 +1,30 @@
 package com.artysh.storeapp.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "transactions")
-public class Transaction {
-
+@Table(name = "transaction_history")
+public class TransactionHistory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")
     private int transactionId;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Client client;
-
-    @Column(name = "amount", nullable = false)
+    private int clientId;
+    private int productId;
     private double amount;
-
-    @Column(name = "status", nullable = false)
     private String status;
-
-    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
 
     public int getTransactionId() {
         return transactionId;
@@ -33,12 +34,12 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public Client getClient() {
-        return client;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
     public double getAmount() {

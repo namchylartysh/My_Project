@@ -1,0 +1,112 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="#1" author="artysh">
+        <createTable tableName="clients">
+            <column name="client_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year_of_birth" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="varchar(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="transactions">
+            <column name="transaction_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="amount" type="decimal(10, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="transactions"
+                                 baseColumnNames="client_id"
+                                 constraintName="transaction_client_fk"
+                                 referencedTableName="clients"
+                                 referencedColumnNames="client_id"/>
+
+        <createTable tableName="products">
+            <column name="product_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="price" type="decimal(10, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="products"
+                                 baseColumnNames="transaction_id"
+                                 constraintName="product_transaction_fk"
+                                 referencedTableName="transactions"
+                                 referencedColumnNames="transaction_id"/>
+        
+        <createTable tableName="transaction_history">
+            <column name="transaction_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="client_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="decimal(10, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="transaction_history"
+                                 baseColumnNames="client_id"
+                                 constraintName="transaction_history_client_fk"
+                                 referencedTableName="clients"
+                                 referencedColumnNames="client_id"/>
+        <addForeignKeyConstraint baseTableName="transaction_history"
+                                 baseColumnNames="product_id"
+                                 constraintName="transaction_product_fk"
+                                 referencedTableName="products"
+                                 referencedColumnNames="product_id"/>
+    </changeSet>
+
+</databaseChangeLog>
